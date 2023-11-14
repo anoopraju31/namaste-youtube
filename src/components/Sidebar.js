@@ -2,7 +2,7 @@ import React from 'react'
 
 const Sidebar = () => {
 	return (
-		<aside className='p-5 shadow-lg'>
+		<aside className='p-5 shadow-lg col-span-1'>
 			<h2> Subscriptions </h2>
 			<ul>
 				<li> Music </li>
