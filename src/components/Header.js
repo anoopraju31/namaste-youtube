@@ -1,14 +1,24 @@
 import React from 'react'
+import { useDispatch } from 'react-redux'
 import { RxHamburgerMenu } from 'react-icons/rx'
 import { IoMdSearch } from 'react-icons/io'
 import user from '../assests/img/user.png'
+import { toggleMenu } from '../redux/appSlice'
 
 const Header = () => {
+	const dispatch = useDispatch()
+
+	const toggleMenuHandler = () => {
+		dispatch(toggleMenu())
+	}
+
 	return (
 		<header className='grid grid-flow-col p-5 hadow-sm'>
 			<div className='col-span-1 flex items-center gap-4'>
 				{/* Hamburger */}
-				<div className='p-2 rounded-full'>
+				<div
+					className='p-2 rounded-full cursor-pointer'
+					onClick={toggleMenuHandler}>
 					<RxHamburgerMenu size={28} />
 				</div>
 
