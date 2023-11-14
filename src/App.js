@@ -1,5 +1,13 @@
+import Body from './components/Body'
+import Header from './components/Header'
+
 function App() {
-	return <h1 className='text-3xl font-bold underline'> Namaste Youtube! </h1>
+	return (
+		<div>
+			<Header />
+			<Body />
+		</div>
+	)
 }
 
 export default App
