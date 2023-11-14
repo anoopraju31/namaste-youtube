@@ -1,6 +1,11 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 
 const Sidebar = () => {
+	const isMenuOpen = useSelector((state) => state.app.isMenuOpen)
+
+	if (!isMenuOpen) return null
+
 	return (
 		<aside className='p-5 shadow-lg bg-slate-200 w-60'>
 			<ul>
