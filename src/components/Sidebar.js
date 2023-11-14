@@ -3,12 +3,27 @@ import React from 'react'
 const Sidebar = () => {
 	return (
 		<aside className='p-5 shadow-lg bg-slate-200 w-60'>
-			<h2> Subscriptions </h2>
 			<ul>
-				<li> Music </li>
-				<li> Sports </li>
-				<li> Gaming </li>
-				<li> Movies </li>
+				<li className='px-3 py-1 text-base font-bold'> Home </li>
+				<li className='px-3 py-1 text-base font-bold'> Shorts </li>
+				<li className='px-3 py-1 text-base font-bold'> Video </li>
+				<li className='px-3 py-1 text-base font-bold'> Live </li>
+			</ul>
+
+			<h2 className='font-bold text-center py-3'> Subscriptions </h2>
+			<ul>
+				<li className='px-3 py-1 text-base font-bold'> Music </li>
+				<li className='px-3 py-1 text-base font-bold'> Sports </li>
+				<li className='px-3 py-1 text-base font-bold'> Gaming </li>
+				<li className='px-3 py-1 text-base font-bold'> Movies </li>
+			</ul>
+
+			<h2 className='font-bold text-center py-3'> Watchlist </h2>
+			<ul>
+				<li className='px-3 py-1 text-base font-bold'> Music </li>
+				<li className='px-3 py-1 text-base font-bold'> Sports </li>
+				<li className='px-3 py-1 text-base font-bold'> Gaming </li>
+				<li className='px-3 py-1 text-base font-bold'> Movies </li>
 			</ul>
 		</aside>
 	)
