@@ -21,38 +21,11 @@ const VideoContainer = () => {
 	if (!videos) return null
 
 	return (
-		<div className='@container/main p-3'>
-			<div className='grid grid-cols-1 @sm/main:grid-cols-1 @lg/main:grid-cols-2 @2xl/main:grid-cols-3 @4xl/main:grid-cols-4 gap-3'>
-				<VideoCard info={videos[0]} />
-				<VideoCard info={videos[0]} />
-				<VideoCard info={videos[0]} />
-				<VideoCard info={videos[0]} />
-				<VideoCard info={videos[0]} />
-				<VideoCard info={videos[0]} />
-				<VideoCard info={videos[0]} />
-				<VideoCard info={videos[0]} />
-				<VideoCard info={videos[0]} />
-				<VideoCard info={videos[0]} />
-				<VideoCard info={videos[0]} />
-				<VideoCard info={videos[0]} />
-				<VideoCard info={videos[0]} />
-				<VideoCard info={videos[0]} />
-				<VideoCard info={videos[0]} />
-				<VideoCard info={videos[0]} />
-				<VideoCard info={videos[0]} />
-				<VideoCard info={videos[0]} />
-				<VideoCard info={videos[0]} />
-				<VideoCard info={videos[0]} />
-				<VideoCard info={videos[0]} />
-				<VideoCard info={videos[0]} />
-				<VideoCard info={videos[0]} />
-				<VideoCard info={videos[0]} />
-				<VideoCard info={videos[0]} />
-				<VideoCard info={videos[0]} />
-				<VideoCard info={videos[0]} />
-				<VideoCard info={videos[0]} />
-				<VideoCard info={videos[0]} />
-				<VideoCard info={videos[0]} />
+		<div className='@container/main max-w-[1536px] px-4 py-2'>
+			<div className='grid grid-cols-1 @sm/main:grid-cols-1 @xl/main:grid-cols-2 @4xl/main:grid-cols-3 @6xl/main:grid-cols-4 gap-3'>
+				{videos.map((video) => (
+					<VideoCard key={video?.id} info={video} />
+				))}
 			</div>
 		</div>
 	)

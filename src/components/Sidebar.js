@@ -7,7 +7,7 @@ const Sidebar = () => {
 	if (!isMenuOpen) return null
 
 	return (
-		<aside className='p-5 shadow-lg bg-slate-200 w-60'>
+		<aside className='p-5 shadow-lg bg-slate-200 w-72 absolute xl:relative z-10'>
 			<ul>
 				<li className='px-3 py-1 text-base font-bold'> Home </li>
 				<li className='px-3 py-1 text-base font-bold'> Shorts </li>
