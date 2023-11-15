@@ -1,14 +1,14 @@
 import React from 'react'
-import { YOUTUBE_CHANNEL_PROFILE_API_URL } from '../utills/constants'
+import { Link } from 'react-router-dom'
 
 const VideoCard = ({ info }) => {
 	if (!info) return null
 
-	const { snippet, statistics } = info
+	const { snippet, statistics, id } = info
 	const { channelTitle, title, thumbnails } = snippet
 
 	return (
-		<div className='w-full'>
+		<Link to={`/watch?v=${id}`} className='w-full'>
 			<div className='w-full'>
 				<img
 					className='w-full rounded-xl'
@@ -25,7 +25,7 @@ const VideoCard = ({ info }) => {
 					<p> {statistics.viewCount} views </p>
 				</div>
 			</div>
-		</div>
+		</Link>
 	)
 }
 
