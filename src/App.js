@@ -1,16 +1,16 @@
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
-import Layout from './components/Layout'
-import Home from './components/Home'
 import WatchPage from './components/WatchPage'
+import Body from './components/Body'
+import MainContainer from './components/MainContainer'
 
 const appRouter = createBrowserRouter([
 	{
 		path: '/',
-		element: <Layout />,
+		element: <Body />,
 		children: [
 			{
 				path: '/',
-				element: <Home />,
+				element: <MainContainer />,
 			},
 			{
 				path: '/watch/:id',

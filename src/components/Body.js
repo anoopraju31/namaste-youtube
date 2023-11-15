@@ -1,18 +1,22 @@
 import React from 'react'
+import { Provider } from 'react-redux'
+import { Outlet } from 'react-router-dom'
+import store from '../redux/store'
 import Sidebar from './Sidebar'
-import MainContainer from './MainContainer'
 import Header from './Header'
 
 const Body = () => {
 	return (
-		<div className=''>
-			<Header />
+		<Provider store={store}>
+			<div className=''>
+				<Header />
 
-			<div className='flex'>
-				<Sidebar />
-				<MainContainer />
+				<div className='flex'>
+					<Sidebar />
+					<Outlet />
+				</div>
 			</div>
-		</div>
+		</Provider>
 	)
 }
 
