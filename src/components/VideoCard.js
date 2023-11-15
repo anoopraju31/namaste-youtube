@@ -2,8 +2,6 @@ import React from 'react'
 import { YOUTUBE_CHANNEL_PROFILE_API_URL } from '../utills/constants'
 
 const VideoCard = ({ info }) => {
-	console.log(info)
-
 	if (!info) return null
 
 	const { snippet, statistics } = info
