@@ -4,6 +4,7 @@ import { RxHamburgerMenu } from 'react-icons/rx'
 import { IoMdSearch } from 'react-icons/io'
 import user from '../assests/img/user.png'
 import { toggleMenu } from '../redux/appSlice'
+import { Link } from 'react-router-dom'
 
 const Header = () => {
 	const dispatch = useDispatch()
@@ -23,13 +24,13 @@ const Header = () => {
 				</div>
 
 				{/* Logo */}
-				<div className=''>
+				<Link to='/' className=''>
 					<img
 						className='h-6'
 						src='https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/YouTube_Logo_2017.svg/768px-YouTube_Logo_2017.svg.png'
 						alt='logo'
 					/>
-				</div>
+				</Link>
 			</div>
 
 			{/* Search Bar */}
