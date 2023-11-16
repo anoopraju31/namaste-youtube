@@ -29,4 +29,18 @@ const VideoCard = ({ info }) => {
 	)
 }
 
+export const adVideoCard = (VideoCard) => {
+	return ({ info }) => {
+		return (
+			<div className=''>
+				<VideoCard info={info} />
+				<div className='p-1 flex justify-between'>
+					<p className='text-sm'>Ad</p>
+					<p className='text-sm'> animal </p>
+				</div>
+			</div>
+		)
+	}
+}
+
 export default VideoCard
