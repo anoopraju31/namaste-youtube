@@ -4,7 +4,7 @@ import ChatMessage from './ChatMessage'
 const LiveChat = () => {
 	return (
 		<div className='w-full h-[600px] p-2 bg-slate-100 border border-black rounded-lg'>
-			<ChatMessage />
+			<ChatMessage name='Askshay Saini' message='This namaste react live' />
 		</div>
 	)
 }
