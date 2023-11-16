@@ -6,7 +6,7 @@ const SearchItem = ({ suggestion }) => {
 	const navigate = useNavigate()
 
 	const handleClick = () => {
-		navigate('/result?search_query=helloween')
+		navigate('/result?search_query=' + suggestion)
 	}
 	return (
 		<li
