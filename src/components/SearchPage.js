@@ -12,12 +12,14 @@ const SearchPage = () => {
 
 	const getSearchResults = async () => {
 		const searchQuery = searchParams.get('search_query')
-		const res = await fetch(YOUTUBE_SEARCH_API_URL(searchQuery))
+		const res = await fetch(YOUTUBE_SEARCH_API_URL('snippet', searchQuery))
 		const data = await res.json()
 
 		if (!data?.items) return
 
 		setResults(data.items)
+
+		console.log(data.items)
 	}
 
 	return (
