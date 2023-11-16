@@ -3,7 +3,7 @@ import ChatMessage from './ChatMessage'
 
 const LiveChat = () => {
 	return (
-		<section className='w-full p-2 bg-slate-100 border border-black rounded-lg'>
+		<section className='w-full p-2 bg-slate-100 rounded-lg'>
 			<div className='px-4 pb-2'>
 				<h2 className='text-lg font-bold'> Live Chat </h2>
 			</div>
