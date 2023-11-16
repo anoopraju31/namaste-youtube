@@ -4,6 +4,7 @@ import { closeMenu } from '../redux/appSlice'
 import { useSearchParams } from 'react-router-dom'
 import CommentsContainer from './CommentsContainer'
 import RelatedVideos from './RelatedVideos'
+import LiveChat from './LiveChat'
 
 const WatchPage = () => {
 	const [searchParams] = useSearchParams()
@@ -29,6 +30,7 @@ const WatchPage = () => {
 				</div>
 
 				<div className='w-full lg:hidden'>
+					<LiveChat />
 					<RelatedVideos />
 				</div>
 
@@ -38,6 +40,7 @@ const WatchPage = () => {
 			</div>
 
 			<div className='hidden lg:block lg:w-1/3'>
+				<LiveChat />
 				<RelatedVideos />
 			</div>
 		</main>
