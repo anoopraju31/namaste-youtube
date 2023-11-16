@@ -6,6 +6,7 @@ import user from '../assests/img/user.png'
 import { toggleMenu } from '../redux/appSlice'
 import { Link } from 'react-router-dom'
 import { YOUTUBE_SEARCH_API } from '../utills/constants'
+import { cacheSuggestions, removeSuggestions } from '../redux/searchSlice'
 
 const Header = () => {
 	const [searchQuery, setSearchQuery] = useState('')
@@ -26,6 +27,7 @@ const Header = () => {
 		if (!searchQuery) {
 			setSuggestions([])
 			setShowSuggestions(false)
+			dispatch(removeSuggestions())
 			return
 		}
 
@@ -34,6 +36,7 @@ const Header = () => {
 
 		setSuggestions(data[1])
 		setShowSuggestions(true)
+		dispatch(cacheSuggestions({ searchQuery, suggestion: data[1] }))
 	}
 
 	const toggleMenuHandler = () => {
