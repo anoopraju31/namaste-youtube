@@ -4,7 +4,7 @@ const searchSlice = createSlice({
 	name: 'search',
 	initialState: {
 		searchQuery: '',
-		suggestions: {},
+		cachedSuggestions: {},
 	},
 	reducers: {
 		searchQueryChange: (state, action) => {
@@ -12,10 +12,13 @@ const searchSlice = createSlice({
 		},
 		cacheSuggestions: (state, action) => {
 			const { searchQuery, suggestion } = action.payload
-			state.suggestions = { ...state.suggestions, [searchQuery]: suggestion }
+			state.cachedSuggestions = {
+				...state.cachedSuggestions,
+				[searchQuery]: suggestion,
+			}
 		},
 		removeSuggestions: (state) => {
-			state.suggestions = {}
+			state.cachedSuggestions = {}
 		},
 	},
 })

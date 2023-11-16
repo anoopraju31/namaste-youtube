@@ -1,17 +1,24 @@
 import React, { useEffect, useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { RxHamburgerMenu } from 'react-icons/rx'
 import { IoMdSearch } from 'react-icons/io'
 import user from '../assests/img/user.png'
 import { toggleMenu } from '../redux/appSlice'
 import { Link } from 'react-router-dom'
 import { YOUTUBE_SEARCH_API } from '../utills/constants'
-import { cacheSuggestions, removeSuggestions } from '../redux/searchSlice'
+import {
+	cacheSuggestions,
+	removeSuggestions,
+	searchQueryChange,
+} from '../redux/searchSlice'
 
 const Header = () => {
-	const [searchQuery, setSearchQuery] = useState('')
 	const [suggestions, setSuggestions] = useState([])
 	const [showSuggestions, setShowSuggestions] = useState(false)
+	const searchQuery = useSelector((state) => state.search.searchQuery)
+	const cachedSuggestions = useSelector(
+		(state) => state.search.cachedSuggestions,
+	)
 	const dispatch = useDispatch()
 
 	// Debouncing
@@ -31,6 +38,11 @@ const Header = () => {
 			return
 		}
 
+		if (cachedSuggestions[searchQuery]) {
+			setShowSuggestions(cachedSuggestions[searchQuery])
+			return
+		}
+
 		const res = await fetch(YOUTUBE_SEARCH_API + searchQuery)
 		const data = await res.json()
 
@@ -41,6 +53,10 @@ const Header = () => {
 
 	const toggleMenuHandler = () => {
 		dispatch(toggleMenu())
+	}
+
+	const handleSearchQueryChange = (e) => {
+		dispatch(searchQueryChange(e.target.value))
 	}
 
 	return (
@@ -70,7 +86,7 @@ const Header = () => {
 						className='w-full px-4 py-2 border border-gray-400 outline-none rounded-l-full'
 						type='text'
 						value={searchQuery}
-						onChange={(e) => setSearchQuery(e.target.value)}
+						onChange={handleSearchQueryChange}
 						placeholder='search'
 						onFocus={() => setShowSuggestions(true)}
 						onBlur={() => setShowSuggestions(false)}
