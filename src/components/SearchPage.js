@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { YOUTUBE_SEARCH_API_URL } from '../utills/constants'
+import VideoCard from './VideoCard'
 
 const SearchPage = () => {
 	const [results, setResults] = useState([])
@@ -23,13 +24,18 @@ const SearchPage = () => {
 	}
 
 	return (
-		<main className='px-4 mt-4'>
-			{results.map((result) => (
-				<p className='my-2' key={result.etag}>
-					{' '}
-					{result.snippet.title}{' '}
-				</p>
-			))}
+		<main className='px-4 mt-4 grid  gap-4'>
+			{results.map((result) => {
+				const info = {
+					id: result.id.videoId,
+					snippet: result.snippet,
+					statistics: {
+						viewCount: 0,
+					},
+				}
+
+				return <VideoCard key={info?.id} info={info} isExtended />
+			})}
 		</main>
 	)
 }
