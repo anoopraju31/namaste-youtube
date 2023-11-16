@@ -3,7 +3,7 @@ import Comment from './Comment'
 
 const CommentsList = ({ comments }) => {
 	return (
-		<div>
+		<div className='flex flex-col gap-4'>
 			{comments.map((comment) => (
 				<Comment key={comment.id} data={comment} />
 			))}
