@@ -19,8 +19,6 @@ const SearchPage = () => {
 		if (!data?.items) return
 
 		setResults(data.items)
-
-		console.log(data.items)
 	}
 
 	return (
