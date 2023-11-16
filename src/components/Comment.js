@@ -2,7 +2,7 @@ import React from 'react'
 import user from '../assests/img/user.png'
 
 const Comment = ({ data }) => {
-	const { name, text, replies } = data
+	const { name, text } = data
 	return (
 		<div className='p-2 flex gap-2 items-center bg-gray-100 rounded-lg'>
 			<div className=''>
