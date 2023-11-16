@@ -1,56 +1,15 @@
-import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import useSearch from '../hooks/useSearch'
 import { IoMdSearch } from 'react-icons/io'
-import {
-	cacheSuggestions,
-	removeSuggestions,
-	searchQueryChange,
-} from '../redux/searchSlice'
-import { YOUTUBE_SEARCH_SUGGESTIONS_API_URL } from '../utills/constants'
 
 const SearchBar = () => {
-	const [suggestions, setSuggestions] = useState([])
-	const [showSuggestions, setShowSuggestions] = useState(false)
-	const searchQuery = useSelector((state) => state.search.searchQuery)
-	const cachedSuggestions = useSelector(
-		(state) => state.search.cachedSuggestions,
-	)
+	const {
+		searchQuery,
+		showSuggestions,
+		setShowSuggestions,
+		suggestions,
+		handleSearchQueryChange,
+	} = useSearch()
 
-	const dispatch = useDispatch()
-
-	// Debouncing
-	useEffect(() => {
-		const timer = setTimeout(() => getSearchSuggestions(), 200)
-
-		return () => {
-			clearTimeout(timer)
-		}
-	}, [searchQuery])
-
-	const getSearchSuggestions = async () => {
-		if (!searchQuery) {
-			setSuggestions([])
-			setShowSuggestions(false)
-			dispatch(removeSuggestions())
-			return
-		}
-
-		if (cachedSuggestions[searchQuery]) {
-			setShowSuggestions(cachedSuggestions[searchQuery])
-			return
-		}
-
-		const res = await fetch(YOUTUBE_SEARCH_SUGGESTIONS_API_URL + searchQuery)
-		const data = await res.json()
-
-		setSuggestions(data[1])
-		dispatch(cacheSuggestions({ searchQuery, suggestion: data[1] }))
-		setShowSuggestions(true)
-	}
-
-	const handleSearchQueryChange = (e) => {
-		dispatch(searchQueryChange(e.target.value))
-	}
 	return (
 		<>
 			<div className='relative w-2/3 max-w-lg'>
