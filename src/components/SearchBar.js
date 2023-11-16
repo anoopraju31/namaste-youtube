@@ -13,7 +13,11 @@ const SearchBar = () => {
 
 	return (
 		<>
-			<div className='relative w-2/3 max-w-lg'>
+			<div
+				onBlur={() => {
+					setTimeout(() => setShowSuggestions(false), 300)
+				}}
+				className='relative w-2/3 max-w-lg'>
 				<input
 					className='w-full px-4 py-2 border border-gray-400 outline-none rounded-l-full'
 					type='text'
@@ -21,7 +25,6 @@ const SearchBar = () => {
 					onChange={handleSearchQueryChange}
 					placeholder='search'
 					onFocus={() => setShowSuggestions(true)}
-					onBlur={() => setShowSuggestions(false)}
 				/>
 
 				{showSuggestions && suggestions.length > 0 && (
