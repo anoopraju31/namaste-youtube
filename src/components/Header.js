@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { RxHamburgerMenu } from 'react-icons/rx'
 import { IoMdSearch } from 'react-icons/io'
-import { PiClockCounterClockwiseLight } from 'react-icons/pi'
 import user from '../assests/img/user.png'
 import { toggleMenu } from '../redux/appSlice'
 import { Link } from 'react-router-dom'
@@ -11,6 +10,7 @@ import { YOUTUBE_SEARCH_API } from '../utills/constants'
 const Header = () => {
 	const [searchQuery, setSearchQuery] = useState('')
 	const [suggestions, setSuggestions] = useState([])
+	const [showSuggestions, setShowSuggestions] = useState(false)
 	const dispatch = useDispatch()
 
 	// Debouncing
@@ -25,6 +25,7 @@ const Header = () => {
 	const getSearchSuggestions = async () => {
 		if (!searchQuery) {
 			setSuggestions([])
+			setShowSuggestions(false)
 			return
 		}
 
@@ -32,6 +33,7 @@ const Header = () => {
 		const data = await res.json()
 
 		setSuggestions(data[1])
+		setShowSuggestions(true)
 	}
 
 	const toggleMenuHandler = () => {
@@ -67,13 +69,15 @@ const Header = () => {
 						value={searchQuery}
 						onChange={(e) => setSearchQuery(e.target.value)}
 						placeholder='search'
+						onFocus={() => setShowSuggestions(true)}
+						onBlur={() => setShowSuggestions(false)}
 					/>
 
-					{suggestions.length > 0 && (
+					{showSuggestions && suggestions.length > 0 && (
 						<ul className='absolute top-12 w-full min-w-fit min-w-lg py-2 bg-gray-200 rounded-xl z-50 flex flex-col gap-1'>
 							{suggestions?.map((suggestion) => (
 								<l1 className='px-4 py-1 cursor-pointer flex gap-2 items-center hover:bg-gray-50 whitespace-nowrap'>
-									<PiClockCounterClockwiseLight size={20} />
+									<IoMdSearch size={20} />
 									<p className='font-bold'>{suggestion}</p>
 								</l1>
 							))}
