@@ -47,8 +47,8 @@ const Header = () => {
 		const data = await res.json()
 
 		setSuggestions(data[1])
-		setShowSuggestions(true)
 		dispatch(cacheSuggestions({ searchQuery, suggestion: data[1] }))
+		setShowSuggestions(true)
 	}
 
 	const toggleMenuHandler = () => {
