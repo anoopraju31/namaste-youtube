@@ -5,7 +5,7 @@ import { IoMdSearch } from 'react-icons/io'
 import user from '../assests/img/user.png'
 import { toggleMenu } from '../redux/appSlice'
 import { Link } from 'react-router-dom'
-import { YOUTUBE_SEARCH_API } from '../utills/constants'
+import { YOUTUBE_SEARCH_SUGGESTIONS_API_URL } from '../utills/constants'
 import {
 	cacheSuggestions,
 	removeSuggestions,
@@ -43,7 +43,7 @@ const Header = () => {
 			return
 		}
 
-		const res = await fetch(YOUTUBE_SEARCH_API + searchQuery)
+		const res = await fetch(YOUTUBE_SEARCH_SUGGESTIONS_API_URL + searchQuery)
 		const data = await res.json()
 
 		setSuggestions(data[1])
