@@ -51,10 +51,17 @@ const useSearch = () => {
 		dispatch(searchQueryChange(e.target.value))
 	}
 
+	const handleBlur = () => {
+		setTimeout(() => setShowSuggestions(false), 300)
+	}
+
+	const handleFocus = () => setShowSuggestions(true)
+
 	return {
 		searchQuery,
 		showSuggestions,
-		setShowSuggestions,
+		handleFocus,
+		handleBlur,
 		suggestions,
 		handleSearchQueryChange,
 	}
