@@ -1,5 +1,6 @@
 import useSearch from '../hooks/useSearch'
 import { IoMdSearch } from 'react-icons/io'
+import SearchItem from './SearchItem'
 
 const SearchBar = () => {
 	const {
@@ -26,10 +27,7 @@ const SearchBar = () => {
 				{showSuggestions && suggestions.length > 0 && (
 					<ul className='absolute top-12 w-full min-w-fit min-w-lg py-2 bg-gray-200 rounded-xl z-50 flex flex-col gap-1'>
 						{suggestions?.map((suggestion) => (
-							<l1 className='px-4 py-1 cursor-pointer flex gap-2 items-center hover:bg-gray-50 whitespace-nowrap'>
-								<IoMdSearch size={20} />
-								<p className='font-bold'>{suggestion}</p>
-							</l1>
+							<SearchItem key={suggestion} suggestion={suggestion} />
 						))}
 					</ul>
 				)}
