@@ -24,6 +24,7 @@ const ChatForm = () => {
 
 		setLiveMessage('')
 	}
+
 	return (
 		<form className='p-4 flex' onSubmit={handleSend}>
 			<input
