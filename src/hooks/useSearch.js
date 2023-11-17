@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import {
 	cacheSuggestions,
@@ -17,16 +17,7 @@ const useSearch = () => {
 
 	const dispatch = useDispatch()
 
-	// Debouncing
-	useEffect(() => {
-		const timer = setTimeout(() => getSearchSuggestions(), 200)
-
-		return () => {
-			clearTimeout(timer)
-		}
-	}, [searchQuery])
-
-	const getSearchSuggestions = async () => {
+	const getSearchSuggestions = useCallback(async () => {
 		if (!searchQuery) {
 			setSuggestions([])
 			setShowSuggestions(false)
@@ -45,7 +36,16 @@ const useSearch = () => {
 		setSuggestions(data[1])
 		dispatch(cacheSuggestions({ searchQuery, suggestion: data[1] }))
 		setShowSuggestions(true)
-	}
+	}, [searchQuery, dispatch, cachedSuggestions])
+
+	// Debouncing
+	useEffect(() => {
+		const timer = setTimeout(() => getSearchSuggestions(), 200)
+
+		return () => {
+			clearTimeout(timer)
+		}
+	}, [searchQuery, getSearchSuggestions])
 
 	const handleSearchQueryChange = (e) => {
 		dispatch(searchQueryChange(e.target.value))
