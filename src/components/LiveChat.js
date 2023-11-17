@@ -31,7 +31,7 @@ const LiveChat = () => {
 			<div className='px-4 pb-2'>
 				<h2 className='text-lg font-bold'> Live Chat </h2>
 			</div>
-			<div className='h-[600px] py-2 overflow-auto'>
+			<div className='h-[600px] py-2 overflow-auto flex flex-col-reverse'>
 				{messages.map((message, idx) => (
 					<ChatMessage
 						key={idx}
