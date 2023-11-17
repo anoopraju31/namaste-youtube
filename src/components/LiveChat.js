@@ -12,7 +12,6 @@ const LiveChat = () => {
 	useEffect(() => {
 		const interval = setInterval(() => {
 			// API Polling
-			console.log('API Polling')
 
 			dispatch(
 				addMessage({
@@ -20,7 +19,7 @@ const LiveChat = () => {
 					message: makeRandomMessage(20) + '🚀',
 				}),
 			)
-		}, 200)
+		}, 1500)
 
 		return () => {
 			clearInterval(interval)
