@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { addMessage } from '../redux/chatSlics'
 import ChatMessage from './ChatMessage'
-import { generateRandomName } from '../utills/helper'
+import { generateRandomName, makeRandomMessage } from '../utills/helper'
 
 const LiveChat = () => {
 	const messages = useSelector((state) => state.chat.messages)
@@ -16,7 +16,7 @@ const LiveChat = () => {
 			dispatch(
 				addMessage({
 					name: generateRandomName(),
-					message: 'This is live chat for namaste react 🚀🚀🚀',
+					message: makeRandomMessage(20) + '🚀',
 				}),
 			)
 		}, 2000)
