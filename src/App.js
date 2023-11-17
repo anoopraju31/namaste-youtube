@@ -3,6 +3,7 @@ import WatchPage from './components/WatchPage'
 import Body from './components/Body'
 import MainContainer from './components/MainContainer'
 import SearchPage from './components/SearchPage'
+import Demo from './components/Demo'
 
 const appRouter = createBrowserRouter([
 	{
@@ -20,6 +21,10 @@ const appRouter = createBrowserRouter([
 			{
 				path: '/result',
 				element: <SearchPage />,
+			},
+			{
+				path: '/demo',
+				element: <Demo />,
 			},
 		],
 	},
