@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react'
-import ChatMessage from './ChatMessage'
+import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { addMessage } from '../redux/chatSlics'
+import ChatMessage from './ChatMessage'
 
 const LiveChat = () => {
 	const messages = useSelector((state) => state.chat.messages)
