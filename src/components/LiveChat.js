@@ -1,7 +1,18 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import ChatMessage from './ChatMessage'
 
 const LiveChat = () => {
+	useEffect(() => {
+		const interval = setInterval(() => {
+			// API Polling
+			console.log('API Polling')
+		}, 2000)
+
+		return () => {
+			clearInterval(interval)
+		}
+	}, [])
+
 	return (
 		<section className='w-full p-2 bg-slate-100 rounded-lg'>
 			<div className='px-4 pb-2'>
