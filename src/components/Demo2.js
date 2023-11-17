@@ -1,9 +1,18 @@
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 
 const Demo2 = () => {
 	const [y, setY] = useState(0)
 	let x = 10
 	const z = useRef(0)
+	const interval = useRef(null)
+
+	useEffect(() => {
+		interval.current = setInterval(() => {
+			console.log('Rendering', Math.random())
+		}, 1000)
+
+		return () => clearInterval(interval.current)
+	}, [])
 
 	return (
 		<div className='mx-4 p-6 bg-slate-500 border border-black w-96 h-96'>
@@ -45,6 +54,15 @@ const Demo2 = () => {
 					Increase Z{' '}
 				</button>
 			</div>
+
+			<button
+				onClick={() => {
+					clearInterval(interval.current)
+				}}
+				className='bg-red-500 px-6 py-1 my-4 text-white font-bold rounded-lg'>
+				{' '}
+				Stop Printing{' '}
+			</button>
 		</div>
 	)
 }
