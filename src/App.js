@@ -4,6 +4,7 @@ import Body from './components/Body'
 import MainContainer from './components/MainContainer'
 import SearchPage from './components/SearchPage'
 import Demo from './components/Demo'
+import Demo2 from './components/Demo2'
 
 const appRouter = createBrowserRouter([
 	{
@@ -24,7 +25,12 @@ const appRouter = createBrowserRouter([
 			},
 			{
 				path: '/demo',
-				element: <Demo />,
+				element: (
+					<>
+						<Demo />
+						<Demo2 />
+					</>
+				),
 			},
 		],
 	},
