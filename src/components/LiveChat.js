@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { addMessage } from '../redux/chatSlics'
 import ChatMessage from './ChatMessage'
+import { generateRandomName } from '../utills/helper'
 
 const LiveChat = () => {
 	const messages = useSelector((state) => state.chat.messages)
@@ -14,7 +15,7 @@ const LiveChat = () => {
 
 			dispatch(
 				addMessage({
-					name: 'Askshay Saini',
+					name: generateRandomName(),
 					message: 'This is live chat for namaste react 🚀🚀🚀',
 				}),
 			)
@@ -26,7 +27,7 @@ const LiveChat = () => {
 	}, [])
 
 	return (
-		<section className='w-full p-2 bg-slate-100 rounded-lg'>
+		<section className='w-full px-2 py-6 bg-slate-100 rounded-lg'>
 			<div className='px-4 pb-2'>
 				<h2 className='text-lg font-bold'> Live Chat </h2>
 			</div>
