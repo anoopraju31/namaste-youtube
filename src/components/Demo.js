@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useMemo, useState } from 'react'
 import { findPrime } from '../utills/helper'
 
 const Demo = () => {
@@ -7,7 +7,7 @@ const Demo = () => {
 
 	console.log('Rendering...')
 
-	const prime = findPrime(number)
+	const prime = useMemo(() => findPrime(number), [number])
 
 	return (
 		<div
