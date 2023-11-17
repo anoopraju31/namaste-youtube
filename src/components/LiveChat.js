@@ -1,11 +1,22 @@
 import React, { useEffect } from 'react'
 import ChatMessage from './ChatMessage'
+import { useDispatch } from 'react-redux'
+import { addMessage } from '../redux/chatSlics'
 
 const LiveChat = () => {
+	const dispatch = useDispatch()
+
 	useEffect(() => {
 		const interval = setInterval(() => {
 			// API Polling
 			console.log('API Polling')
+
+			dispatch(
+				addMessage({
+					name: 'Askshay Saini',
+					message: 'This is live chat for namaste react 🚀🚀🚀',
+				}),
+			)
 		}, 2000)
 
 		return () => {
@@ -18,34 +29,7 @@ const LiveChat = () => {
 			<div className='px-4 pb-2'>
 				<h2 className='text-lg font-bold'> Live Chat </h2>
 			</div>
-			<div className='h-[600px] py-2 overflow-auto'>
-				<ChatMessage name='Askshay Saini' message='This namaste react live' />
-				<ChatMessage name='Askshay Saini' message='This namaste react live' />
-				<ChatMessage name='Askshay Saini' message='This namaste react live' />
-				<ChatMessage name='Askshay Saini' message='This namaste react live' />
-				<ChatMessage name='Askshay Saini' message='This namaste react live' />
-				<ChatMessage name='Askshay Saini' message='This namaste react live' />
-				<ChatMessage name='Askshay Saini' message='This namaste react live' />
-				<ChatMessage name='Askshay Saini' message='This namaste react live' />
-				<ChatMessage name='Askshay Saini' message='This namaste react live' />
-				<ChatMessage name='Askshay Saini' message='This namaste react live' />
-				<ChatMessage name='Askshay Saini' message='This namaste react live' />
-				<ChatMessage name='Askshay Saini' message='This namaste react live' />
-				<ChatMessage name='Askshay Saini' message='This namaste react live' />
-				<ChatMessage name='Askshay Saini' message='This namaste react live' />
-				<ChatMessage name='Askshay Saini' message='This namaste react live' />
-				<ChatMessage name='Askshay Saini' message='This namaste react live' />
-				<ChatMessage name='Askshay Saini' message='This namaste react live' />
-				<ChatMessage name='Askshay Saini' message='This namaste react live' />
-				<ChatMessage name='Askshay Saini' message='This namaste react live' />
-				<ChatMessage name='Askshay Saini' message='This namaste react live' />
-				<ChatMessage name='Askshay Saini' message='This namaste react live' />
-				<ChatMessage name='Askshay Saini' message='This namaste react live' />
-				<ChatMessage name='Askshay Saini' message='This namaste react live' />
-				<ChatMessage name='Askshay Saini' message='This namaste react live' />
-				<ChatMessage name='Askshay Saini' message='This namaste react live' />
-				<ChatMessage name='Askshay Saini' message='This namaste react live' />
-			</div>
+			<div className='h-[600px] py-2 overflow-auto'></div>
 		</section>
 	)
 }
