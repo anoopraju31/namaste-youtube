@@ -19,7 +19,7 @@ const LiveChat = () => {
 					message: makeRandomMessage(20) + '🚀',
 				}),
 			)
-		}, 2000)
+		}, 200)
 
 		return () => {
 			clearInterval(interval)

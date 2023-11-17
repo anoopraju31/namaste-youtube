@@ -9,3 +9,5 @@ export const YOUTUBE_SEARCH_SUGGESTIONS_API_URL =
 
 export const YOUTUBE_SEARCH_API_URL = (part, query) =>
 	`https://youtube.googleapis.com/youtube/v3/search?part=${part}&maxResults=25&q=${query}&key=${process.env.REACT_APP_YOUTUBE_API_KEY}`
+
+export const OFFSET_LIVE_CHAT = 100
